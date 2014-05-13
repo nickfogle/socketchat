@@ -1,7 +1,7 @@
 {
-  "name": "AngularChat",
-  "version": "0.9.0",
-  "description": "Chat application using node.js, socket.io and AngularJS",
+  "name": "SocketChat",
+  "version": "0.3.0",
+  "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "dependencies": {
     "ejs": "~0.8.5",
@@ -19,10 +19,10 @@
     "type": "git",
     "url": "https://github.com/tamaspiros/AngularChat.git"
   },
-  "author": "Tamas Piros <me@tamas.io>",
+  "author": "nick fogle <nickfogle@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tamaspiros/AngularChat/issues"
+    "url": "https://github.com/nickfogle/chat"
   },
-  "homepage": "https://github.com/tamaspiros/AngularChat"
+  "homepage": "https://github.com/nickfogle/chat"
 }

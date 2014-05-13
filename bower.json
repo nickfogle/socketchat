@@ -1,11 +1,11 @@
 {
-  "name": "AngularChat",
-  "version": "0.9.0",
-  "homepage": "https://github.com/tamaspiros/AngularChat",
+  "name": "SocketChat",
+  "version": "0.3.0",
+  "homepage": "https://github.com/nickfogle/chat",
   "authors": [
-    "Tamas Piros <me@tamas.io>"
+    "Nick Fogle"
   ],
-  "description": "Chat application using node.js, socket.io and AngularJS",
+  "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "license": "MIT",
   "ignore": [
