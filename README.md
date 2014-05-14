@@ -1,7 +1,7 @@
 # AngularChat - chat app using node.js, socket.io and AngularJS
 
 ## Libraries used
-### Backend
+### Backend Stack
 <ul>
   <li>node.js</li>
   <li>socket.io</li>
