@@ -109,3 +109,8 @@ color: #DF691A;
 }
 
 *, *:after, *::before { box-sizing: border-box; }
+
+.text-muted {
+color: #8798A8;
+font-size: 18px;
+}
