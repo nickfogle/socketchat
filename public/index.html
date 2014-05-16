@@ -98,7 +98,7 @@
                 <label class="sr-only" for="message">Message: </label>
                 <input type="text" placeholder="Enter message" class="form-control" ng-model="message" name="message" id="message" ng-keypress="typing($event, user.inroom)" on-focus="focus(true)" on-blur="focus(false)">
               </div>
-              <button type="submit" class="btn btn-default btn-sm" ng-click='send()'>Send message</button>
+              <button type="submit" class="btn btn-success" ng-click='send()'>Send message</button>
             </form>
             <small ng-cloak ng-if="error" class="text-danger">{{ error.send }}</small>
 

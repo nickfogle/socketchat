@@ -68,6 +68,11 @@ code {
   border-radius: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+  color: #DF691A;
+}
+
+li.list-unstyled.ng-scope.ng-binding {
+color: #DF691A;
 }
 
 #messages ul {
