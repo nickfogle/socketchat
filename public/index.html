@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/bootstrap.yeti.css">
+  <link rel="stylesheet" href="css/bootstrap.superhero.css">
   <link rel="stylesheet" href="css/flags.css">
   <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
 </head>
@@ -54,11 +54,14 @@
     <!-- Begin page content -->
     <div class="container" ng-show="!joined">
       <form class="form-inline" role="form">
+
         <div class="form-group">
           <label class="sr-only" for="username">Name: </label>
           <input type="text" class="form-control" name="username" id="username" ng-model="username" placeholder="Enter desired name">
         </div>
+
         <button type="submit" class="btn btn-default btn-sm" ng-click='joinServer()'>Enter chat</button>
+
       </form>
       <small ng-cloak ng-if="error" class="text-danger">{{ error.join }}</small> <small ng-cloak ng-if="suggestedUsername" class="text-info" ng-click="setUsername(suggestedUsername)">How about <span class="text-success" style="cursor: pointer;">{{ suggestedUsername }}</a>?</small>
     </div>
@@ -124,10 +127,10 @@
   </div>
   <div class="modal-body">
     <p>Thanks for using my Chat Application.</p>
-    <p>This is an experimental project using open source JavaScript technologies.</p>
+    <p>This is an experimental project using open source JavaScript technologies. If you'd like to read more about the project please view the source code <a href="https://github.com/nickfogle/chat/"> here</a>.</p>
     <p>To get started, enter your username. Then you can create a room or join an already existing one.</p>
-    <p>Please note that once you've joined a room you can't create one (basically you can be part of one room at one time). Also note that if you're a room owner and you disconnect from the server, delete or leave your room all other participants will be removed from the room as well.</p>
-    <p>If you'd like to read more about the project please view the source code<a href="https://github.com/nickfogle/chat/"> here</a>.</p>
+    <p>Please note that once you've joined a room you can't create one (basically you can be part of one room at one time).</p>
+    <p>
     <p>If you're interested in viewing my other work, it's available at<a href="http://nickfogle.com" target="_blank">http://www.nickfogle.com</a></p>
   </div>
   <div class="modal-footer">
