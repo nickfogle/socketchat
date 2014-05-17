@@ -4,7 +4,7 @@ app.constant('useragentmsgs', {
   'errors.useragent.notFound':'unknown',
 });
 app.constant('geolocation_msgs', {
-        'errors.location.unsupportedBrowser':'Browser does not support location services',
+        'errors.location.unsupportedBrowser':'Sorry, your Browser does not support location services. Consider using Google Chrome.',
         'errors.location.notFound':'Unable to determine your location',
 });
 
