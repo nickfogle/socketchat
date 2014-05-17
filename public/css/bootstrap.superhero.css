@@ -15,7 +15,7 @@
 
 .navbar-brand {
   height: 60px;
-  padding: 13px 15px;
+  padding: 19px 15px;
 }
 
 .navbar-nav>li>a {
@@ -42,5 +42,57 @@
   font-size: 15px;
   line-height: 1.5;
   border-radius: 0;
-  padding: 9px 18px;
+  margin-top: 11px;
+  padding: 7px 18px;
+}
+.offline {
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 0;
+  margin-top: 11px;
+  padding: 7px 18px;
+}
+button.btn.btn-warning {
+margin-left: 2px;
+}
+
+.jumbotron {
+padding-top: 50px;
+padding-bottom: 5px;
+margin-bottom: 16px;
+/* color: inherit; */
+background-color: #F5F5F5;
+}
+
+.jumbotron h1 {
+  color: #DF691A;
+}
+.jumbotron .h1 {
+  color: #DF691A;
+}
+
+.jumbotron p {
+margin-bottom: 15px;
+font-size: 23px;
+font-weight: 200;
+color: #DF691A;
+}
+
+form.form-inline.ng-pristine.ng-valid {
+margin-bottom: 120px;
+float: right;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+      padding-top: 70px;
+      padding-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 768px){
+  .jumbotron h1, .jumbotron .h1 {
+      font-size: 67.5px;
+      color: #DF691A;
+    }
 }
