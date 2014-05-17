@@ -83,17 +83,17 @@
       <small ng-cloak ng-if="error" class="text-danger">{{ error.join }}</small> <small ng-cloak ng-if="suggestedUsername" class="text-info" ng-click="setUsername(suggestedUsername)">How about <span class="text-success" style="cursor: pointer;">{{ suggestedUsername }}</a>?</small>
     </div>
     <div ng-hide="!joined" class="container" ng-cloak>
-      <p ng-cloak>Hello {{ user.name }}. <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room as well (but you need to leave the current one first)
+      <p ng-cloak><h1>Hello {{ user.name }}. </h1><span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room as well (but you need to leave the current one first)
       </span><br>
       <small ng-if="user.owns">You can remove your room by clicking delete in drop-down menu in the top right corner.</small></p>
-      <p ng-show="!user.inroom">Create a chat room or join one (top right corner).
+      <p ng-show="!user.inroom">Create a chat room or click the top right menu to join.
         <div id="createroom">
           <form class="form-inline" role="form" ng-hide="user.owns && user.inroom">
             <div class="form-group">
               <label class="sr-only" for="roomname">Room name: </label>
               <input type="text" placeholder="Enter room name" class="form-control" ng-model="roomname" name="roomname" id="roomname">
             </div>
-            <button type="submit" class="btn btn-warning" ng-click="createRoom()">Create room</button>
+            <button type="submit" class="btn btn-primary" ng-click="createRoom()">Create room</button>
             <small ng-cloak ng-if="error" class="text-danger">{{ error.create }}</small>
           </form>
         </div>
@@ -132,7 +132,6 @@
     </div>
   </div>
   <div id="footer">
-    <div class="container" style="height:200px;">
       <p class="text-muted">SocketChat  | <a href="http://nickfogle.com" target="_blank">nickfogle.com</a>  |  <a href="https://twitter.com/nickfogle" target="_blank">@nickfogle</p>
     </div>
   </div>
