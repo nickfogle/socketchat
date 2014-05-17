@@ -42,15 +42,15 @@
   font-size: 15px;
   line-height: 1.5;
   border-radius: 0;
-  margin-top: 11px;
-  padding: 7px 18px;
+  margin-top: 14px;
+  padding: 5px 18px;
 }
 .offline {
   font-size: 15px;
   line-height: 1.5;
   border-radius: 0;
-  margin-top: 11px;
-  padding: 7px 18px;
+  margin-top: 14px;
+  padding: 5px 18px;
 }
 button.btn.btn-warning {
 margin-left: 2px;
@@ -79,8 +79,18 @@ color: #DF691A;
 }
 
 form.form-inline.ng-pristine.ng-valid {
-margin-bottom: 120px;
-float: right;
+margin-bottom: 70px;
+margin-top:50px;
+}
+
+body > .container {
+padding: 0px 15px 0;
+}
+
+.page-header {
+padding-bottom: 9.5px;
+margin: 10px 0 21px;
+border-bottom: 1px solid #EBEBEB;
 }
 
 @media screen and (min-width: 768px) {
