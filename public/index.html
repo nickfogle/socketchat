@@ -108,11 +108,11 @@
             <p ng-cloak>
                <h1>Hello {{ user.name }}. </h1>
                <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span>
-               <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room as well (but you need to leave the current one first)
+               <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room as well (you need to leave the current one first)
             </span><br>
-            <small ng-if="user.owns">You can remove your room by clicking delete in drop-down menu in the top right corner.</small>
+            <small ng-if="user.owns">You can remove your room by clicking delete in the drop-down menu in the top right corner.</small>
          </p>
-            <p ng-show="!user.inroom">Create a chat room or click the top right menu to join.
+            <p ng-show="!user.inroom">Create a chat room or click the top right menu to join one.
                <div id="createroom">
                   <form class="form-inline" role="form" ng-hide="user.owns && user.inroom">
                      <div class="form-group">
@@ -170,12 +170,12 @@
          <h3>SocketChat</h3>
       </div>
       <div class="modal-body">
-         <p>Thanks for using my Chat Application.</p>
-         <p>This is an experimental project using open source JavaScript technologies. If you'd like to read more about the project please view the source code <a href="https://github.com/nickfogle/socketchat/"> here</a>.
+         <p>Thanks for using my Chat Application!</p>
+         <p>This is an experimental project using bleeding edge JavaScript technologies. There are still bugs which should be resolved over time. If you'd like to read more about the project, please view the source code <a href="https://github.com/nickfogle/socketchat/"> here</a>.
          </p>
-         <p>To get started, enter your username. Then you can create a room or join an already existing one. Please note that once you've joined a room you can't create one (basically you can be part of one room at one time).
+         <p>To get started, enter a username. Next you have the option to create a room or join an existing one. Note that once you've joined a room you cannot simultaneously create a separate room.
          </p>
-         <p>If you're interested in viewing my other work, it's available at <a href="http://nickfogle.com" target="_blank">nickfogle.com</a>
+         <p>If you'd like to see my other work, it's available at <a href="http://nickfogle.com" target="_blank">nickfogle.com</a>
          </p>
       </div>
       <div class="modal-footer">

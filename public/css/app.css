@@ -38,6 +38,8 @@ code {
   font-size: 80%;
 }
 
+/* ONLINE STATUS INDICATORS */
+
 .online {
   background-color: #43ac6a;
   border-color: #3c9a5f;
@@ -55,6 +57,8 @@ code {
   border-radius: 0;
   padding: 4px 18px;
 }
+
+/* TEXT BOX */
 
 #messages {
   overflow-y: scroll;

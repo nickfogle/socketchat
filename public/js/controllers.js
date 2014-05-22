@@ -47,7 +47,7 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
         socket.emit('typing', true);
       } else {
         clearTimeout(timeout);
-        timeout = setTimeout(timeoutFunction, 1000);
+        timeout = setTimeout(timeoutFunction, 900);
       }
     }
   }
@@ -204,4 +204,3 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
     $scope.peopleCount = 0;
   });
 }
-

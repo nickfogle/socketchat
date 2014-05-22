@@ -36,6 +36,7 @@
   border-radius: 0;
 }
 
+/* ONLINE STATUS INDICATORS */
 .online {
   background-color: #43AC6A;
   border-color: #3C9A5F;
@@ -56,6 +57,7 @@ button.btn.btn-primary {
 margin-left: 2px;
 }
 
+/* MAIN DISPLAY */
 .jumbotron {
 padding-top: 50px;
 padding-bottom: 5px;
@@ -77,6 +79,8 @@ font-size: 23px;
 font-weight: 200;
 color: #DF691A;
 }
+
+/* CHAT FORM */
 
 form.form-inline.ng-pristine.ng-valid {
 margin-bottom: 70px;
