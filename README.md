@@ -27,11 +27,11 @@
   <li>'who is typing' feature is also enabled</li>
 </ul>
 
-# Setup and configuration for Openshift Deployment (will vary for Heroku and others...)
+# Setup and configuration for Deploying to RH Openshift (will vary for Heroku and others...)
 
 Make sure that you update <strong>app.js</strong> at the backend with your own IP address or hostname:
 <pre>app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
-app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || '192.168.56.102');
+app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 </pre>
 
 Also, specify where to listen for socket.io - update <strong>public/js/services.js</strong>:
