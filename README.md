@@ -50,4 +50,5 @@ Working on the following for next version:
   <li>Making UI Improvements</li>
   <li>Ability for User's to Specify Settings</li>
   <li>Private Chatrooms/Messages</li>
+  <li>Connect to MongoDB for Long-Term Storage</li>
 </ul>
