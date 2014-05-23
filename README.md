@@ -1,6 +1,5 @@
-# AngularChat - chat app using node.js, socket.io and AngularJS
+# SocketChat - simple chat app using node.js, socket.io and AngularJS
 
-## Libraries used
 ### Backend Stack
 <ul>
   <li>node.js</li>
@@ -10,15 +9,14 @@
   <li>ejs</li>
 </ul>
 
-### Frontend
+### Frontend Stack
 <ul>
   <li>AngularJS</li>
-  <li>Angular-Bootsrap (angular-ui)</li>
+  <li>AngularUI</li>
   <li>Bootstrap (Superhero theme)</li>
 </ul>
 
 # Functionality
-The functionality list will continually be extended.
 
 <ul>
   <li>Users can join the chat server after picking a username (usernames have to be unique per user, alternative usernames are generated as well)</li>
@@ -29,7 +27,7 @@ The functionality list will continually be extended.
   <li>'who is typing' feature is also enabled</li>
 </ul>
 
-# Setup and configuration for Openshift Deployment
+# Setup and configuration for Openshift Deployment (will vary for Heroku and others...)
 
 Make sure that you update <strong>app.js</strong> at the backend with your own IP address or hostname:
 <pre>app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
