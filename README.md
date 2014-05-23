@@ -34,11 +34,20 @@ Make sure that you update <strong>app.js</strong> at the backend with your own I
 app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 </pre>
 
-Also, specify where to listen for socket.io - update <strong>public/js/services.js</strong>:
+Then specify where to listen for socket.io by updating <strong>public/js/services.js</strong> to:
 
-<pre>var socket = io.connect('192.168.56.102:3000');</pre>
-(the IP address or host name here should be the same that you've defined in <strong>app.js</strong> at the backend.)
+<pre>var socket = io.connect();</pre>
+(the IP address or host name can be blank or equal to what you set consistent with the line above.)
 
-To install the application execute <code>npm install</code>. This will also automatically  install all frontend dependcies using bower (no need to install that separately).
+To install the application execute <code>npm install</code>. This will also automatically install all frontend dependencies using bower.
 
-To launch the application please execute <code>node app.js</code>.
+# Features in Progress
+
+Working on the following for next version:
+
+<ul>
+  <li>Adding WebRTC Video Chat Support</li>
+  <li>Making UI Improvements</li>
+  <li>Ability for User's to Specify Settings</li>
+  <li>Private Chatrooms/Messages</li>
+</ul>
