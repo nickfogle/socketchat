@@ -34,7 +34,7 @@ Make sure that you update <strong>app.js</strong> at the backend with your own I
 app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 </pre>
 
-Then specify where to listen for socket.io by updating <strong>public/js/services.js</strong> to:
+Then specify port to listen for socket.io by updating <strong>public/js/services.js</strong> to:
 
 <pre>var socket = io.connect();</pre>
 (the IP address or host name can be blank or equal to what you set consistent with the line above.)
