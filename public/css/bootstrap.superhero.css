@@ -10,31 +10,9 @@
 
 .text-muted {
   color: #8798A8;
-  font-size: 18px;
+  font-size: 17px;
 }
 
-.navbar-brand {
-  height: 45px;
-  padding: 15px 15px;
-}
-
-.navbar-nav>li>a {
-  padding-top: 15.5px;
-  padding-bottom: 15.5px;
-}
-
-.navbar-toggle {
-  position: relative;
-  float: right;
-  margin-right: 15px;
-  padding: 17px 14px;
-  margin-top: 5px;
-  margin-bottom: 3px;
-  background-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 0;
-}
 
 /* ONLINE STATUS INDICATORS */
 .online {
@@ -55,54 +33,4 @@
 }
 button.btn.btn-primary {
 margin-left: 2px;
-}
-
-/* MAIN DISPLAY */
-.jumbotron {
-padding-top: 50px;
-padding-bottom: 5px;
-margin-bottom: 16px;
-/* color: inherit; */
-background-color: #F5F5F5;
-}
-
-.jumbotron h1 {
-  color: #DF691A;
-}
-.jumbotron .h1 {
-  color: #DF691A;
-}
-
-.jumbotron p {
-margin-bottom: 15px;
-font-size: 23px;
-font-weight: 200;
-color: #DF691A;
-}
-
-/* CHAT FORM */
-
-form.form-inline.ng-pristine.ng-valid {
-margin-bottom: 45px;
-margin-top:50px;
-}
-
-li > form.form-inline.ng-pristine.ng-valid {
-margin-top: 0;
-margin-bottom: 0;
-}
-
-body > .container {
-padding: 0px 15px 0;
-}
-
-.page-header {
-padding-bottom: 9.5px;
-margin: 10px 0 21px;
-border-bottom: 1px solid #EBEBEB;
-}
-
-.btn {
-   padding:8px;
-   margin-left:1px;
 }
