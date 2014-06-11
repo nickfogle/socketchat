@@ -23,10 +23,10 @@ body {
 }
 
 body > .container {
-  padding: 60px 15px 0;
+  padding: 25px 15px 0;
 }
 .container .text-muted {
-  margin: 13px 0;
+  margin: 15px 0;
 }
 
 #footer > .container {
@@ -65,7 +65,7 @@ code {
   height: 200px;
   word-wrap: break-word;
   min-height: 20px;
-  margin-bottom: 140px;
+  margin-bottom: 80px;
   margin-top: 15px;
   background-color: #fafafa;
   border: 1px solid #e8e8e8;
