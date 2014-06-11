@@ -63,7 +63,7 @@
           <label class="sr-only" for="username">Name: </label>
           <input type="text" class="form-control" name="username" id="username" ng-model="username" placeholder="Enter desired name">
         </div>
-        <button type="submit" class="btn btn-default btn-sm" ng-click='joinServer()'>Enter chat</button>
+        <button type="submit" class="btn btn-primary" style="font-size:15px; margin-left:2px;"ng-click='joinServer()'>Enter chat</button>
       </form>
       <small ng-cloak ng-if="error" class="text-danger">{{ error.join }}</small> <small ng-cloak ng-if="suggestedUsername" class="text-info" ng-click="setUsername(suggestedUsername)">How about <span class="text-success" style="cursor: pointer;">{{ suggestedUsername }}</a>?</small>
     </div>
@@ -78,7 +78,7 @@
               <label class="sr-only" for="roomname">Room name: </label>
               <input type="text" placeholder="Enter room name" class="form-control" ng-model="roomname" name="roomname" id="roomname">
             </div>
-            <button type="submit" class="btn btn-default btn-sm" ng-click="createRoom()">Create room</button>
+            <button type="submit" class="btn btn-primary" ng-click="createRoom()">Create room</button>
             <small ng-cloak ng-if="error" class="text-danger">{{ error.create }}</small>
           </form>
         </div>
@@ -89,7 +89,7 @@
                 <label class="sr-only" for="message">Message: </label>
                 <input type="text" placeholder="Enter message" class="form-control" ng-model="message" name="message" id="message" ng-keypress="typing($event, user.inroom)" on-focus="focus(true)" on-blur="focus(false)">
               </div>
-              <button type="submit" class="btn btn-default btn-sm" ng-click='send()'>Send message</button>
+              <button type="submit" class="btn btn-primary" ng-click='send()'>Send message</button>
             </form>
             <small ng-cloak ng-if="error" class="text-danger">{{ error.send }}</small>
 
