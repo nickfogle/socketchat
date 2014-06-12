@@ -106,3 +106,6 @@ code {
 .fa {
    padding: 0 5px;
 }
+li.text-muted.list-unstyled.ng-scope {
+   font-size:20px;
+}
