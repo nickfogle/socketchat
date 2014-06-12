@@ -22,12 +22,12 @@
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">Toggle Navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#" ng-click="about()">AngularChat</a>
+        <a class="navbar-brand" href="#" ng-click="about()">SocketChat</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -65,13 +65,13 @@
         </div>
         <button type="submit" class="btn btn-primary" style="font-size:15px; margin-left:2px;"ng-click='joinServer()'>Enter chat</button>
       </form>
-      <small ng-cloak ng-if="error" class="text-danger">{{ error.join }}</small> <small ng-cloak ng-if="suggestedUsername" class="text-info" ng-click="setUsername(suggestedUsername)">How about <span class="text-success" style="cursor: pointer;">{{ suggestedUsername }}</a>?</small>
+      <small ng-cloak ng-if="error" class="text-danger">{{ error.join }}</small> <small ng-cloak ng-if="suggestedUsername" class="text-info" ng-click="setUsername(suggestedUsername)">Why don't I call you <span class="text-success" style="cursor: pointer;">{{ suggestedUsername }}</a>?</small>
     </div>
     <div ng-hide="!joined" class="container" ng-cloak>
-      <p ng-cloak>Hello {{ user.name }}. <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room as well (but you need to leave the current one first)
+      <p ng-cloak>Hello {{ user.name }}. <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room (but need to leave the current one first)
       </span><br>
-      <small ng-if="user.owns">You can remove your room by clicking delete in drop-down menu in the top right corner.</small></p>
-      <p ng-show="!user.inroom">Create a chat room or join one (top right corner).
+      <small ng-if="user.owns">Click delete in drop-down menu in the top right corner to remove a room.</small></p>
+      <p ng-show="!user.inroom">Create a chat room or join one (also top right corner).
         <div id="createroom">
           <form class="form-inline" role="form" ng-hide="user.owns && user.inroom">
             <div class="form-group">
