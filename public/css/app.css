@@ -23,7 +23,7 @@ body {
 }
 
 body > .container {
-padding-top: 5%;
+padding-top: 80px;
 }
 .container .text-muted {
   margin: 16px 0 18px;
@@ -41,7 +41,7 @@ code {
 .online {
   background-color: #43ac6a;
   border-color: #3c9a5f;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   border-radius: 0;
   padding: 2px 16px;
@@ -50,7 +50,7 @@ code {
 .offline {
   background-color: #f04124;
   border-color: #ea2f10;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   border-radius: 0;
   padding: 2px 16px;
@@ -111,4 +111,7 @@ li.text-muted.list-unstyled.ng-scope {
 }
 #footer {
    opacity:0.84;
+}
+.navbar {
+   font-size: 13px;
 }
