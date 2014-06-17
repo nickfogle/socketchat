@@ -1,6 +1,6 @@
 {
   "name": "SocketChat",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "dependencies": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tamaspiros/AngularChat.git"
+    "url": "https://github.com/nickfogle/socketchat.git"
   },
   "author": "nick fogle <nickfogle@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nickfogle/chat"
+    "url": "https://github.com/nickfogle/socketchat"
   },
-  "homepage": "https://github.com/nickfogle/chat"
+  "homepage": "https://github.com/nickfogle/socketchat"
 }

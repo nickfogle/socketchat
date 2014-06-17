@@ -27,13 +27,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#" ng-click="about()">SocketChat</a>
+        <a class="navbar-brand" href="http://bbnc.us">SocketChat</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="#" ng-click="about()">About</a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <li ng-cloak><p class="navbar-text online" ng-if='status === "online"'>{{ status }}</p><p class="navbar-text offline" ng-if='status === "offline"'>{{ status }}</p></li>
           <li class="dropdown" ng-show="joined" ng-cloak>
@@ -73,6 +74,8 @@
       <small ng-if="user.owns">Click delete in drop-down menu in the top right corner to remove a room.</small></p>
       <p ng-show="!user.inroom">Create a chat room or join one (also top right corner).
         <div id="createroom">
+
+
           <form class="form-inline" role="form" ng-hide="user.owns && user.inroom">
             <div class="form-group">
               <label class="sr-only" for="roomname">Room name: </label>
@@ -81,6 +84,8 @@
             <button type="submit" class="btn btn-primary" ng-click="createRoom()">Create room</button>
             <small ng-cloak ng-if="error" class="text-danger">{{ error.create }}</small>
           </form>
+
+
         </div>
         <div id="chatpanel" ng-show="user.inroom" ng-cloak>
           <div id="chat">
