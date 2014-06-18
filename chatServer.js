@@ -94,7 +94,7 @@ socket.on('typing', function(data) {
 
 socket.on('send', function(data) {
   if (typeof people[socket.id] === 'undefined') {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You need a name first, please.'});
+    utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'Select a name first, please.'});
   } else {
     if (io.sockets.manager.roomClients[socket.id]['/'+socket.room]) {
       if (_.size(chatHistory[socket.room]) > chatHistoryCount) {
@@ -122,7 +122,7 @@ socket.on('createRoom', function(data) {
     });
     if (!exists) {
       if (people[socket.id].owns !== null && !flag) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You are already an owner of a room.'});
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You already own a room.'});
         flag = true;
       }
       if (people[socket.id].inroom !== null && !flag) {
