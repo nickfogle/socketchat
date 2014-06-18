@@ -94,7 +94,7 @@ socket.on('typing', function(data) {
 
 socket.on('send', function(data) {
   if (typeof people[socket.id] === 'undefined') {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'Select a name first, please.'});
+    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Select a name first, please.'});
   } else {
     if (io.sockets.manager.roomClients[socket.id]['/'+socket.room]) {
       if (_.size(chatHistory[socket.room]) > chatHistoryCount) {
@@ -104,7 +104,7 @@ socket.on('send', function(data) {
       }
       utils.sendToAllClientsInRoom(io, socket.room, 'sendChatMessage', data);
     } else {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'Please connect to a room'});
+      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Please connect to a room'});
     }
   }
 });
@@ -112,7 +112,7 @@ socket.on('send', function(data) {
 socket.on('createRoom', function(data) {
   var flag = false;
   if (typeof people[socket.id] === 'undefined') {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You need a name first, please.'});
+    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You need a name first, please.'});
     flag = true;
   } else {
     var exists = false;
@@ -122,11 +122,11 @@ socket.on('createRoom', function(data) {
     });
     if (!exists) {
       if (people[socket.id].owns !== null && !flag) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You already own a room.'});
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You already own a room.'});
         flag = true;
       }
       if (people[socket.id].inroom !== null && !flag) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You are already in a room.'});
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room.'});
         flag = true;
       }
       if (!flag) {
@@ -158,15 +158,15 @@ socket.on('joinRoom', function(id) {
   if (typeof people[socket.id] !== 'undefined') {
     var room = rooms[id];
     if (socket.id === room.owner && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You own this room, why join it? ;)'});
+      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You own this room, why join it? ;)'});
       flag = true;
     }
     if (_.contains((room.people), socket.id) && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You are already in this room.'});
+      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in this room.'});
       flag = true;
     }
     if (people[socket.id].inroom !== null && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'You are already in a room ('+rooms[people[socket.id].inroom].name+').'});
+      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room ('+rooms[people[socket.id].inroom].name+').'});
       flag = true;
     }
     if (!flag) {
@@ -179,7 +179,7 @@ socket.on('joinRoom', function(id) {
       utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
       utils.sendToSelf(socket, 'sendUserDetail', people[socket.id]);
       if (chatHistory[socket.room].length === 0) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'No chat history.'});
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'No chat history.'});
       } else {
         utils.sendToSelf(socket, 'sendChatMessageHistory', chatHistory[socket.room]);
       }
@@ -193,7 +193,7 @@ socket.on('deleteRoom', function(id) {
       if (socket.id === roomToDelete.owner) { //only allow the owner to delete a room
         purgatory.purge(socket, 'deleteRoom');
       } else {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'Don\'t be cheeky - you are not the owner of this room.'});
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Don\'t be cheeky - you are not the owner of this room.'});
       }
     }
   });
@@ -203,7 +203,7 @@ socket.on('leaveRoom', function(id) {
   if (typeof roomToLeave !== 'undefined') {
     purgatory.purge(socket, 'leaveRoom');
   } else {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'Alfred', message: 'Don\'t be cheeky - you are not the owner of this room.'});
+    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Don\'t be cheeky - you are not the owner of this room.'});
   }
 });
 
