@@ -115,3 +115,9 @@ li.text-muted.list-unstyled.ng-scope {
 .navbar {
    font-size: 13px;
 }
+.navbar-brand {
+   padding:12px 15px;
+}
+.navbar-nav>li>a {
+font-size: 14px;
+}
