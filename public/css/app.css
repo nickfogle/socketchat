@@ -122,35 +122,18 @@ li.text-muted.list-unstyled.ng-scope {
 .navbar-nav>li>a {
 font-size: 14px;
 }
-
-.blinking {
-  animation: blink 1.5s linear infinite;
-  -webkit-animation: blink 1.5s infinite linear;
-  -ms-animation: blink 1.5s infinite linear;
-  -moz-animation: blink 1.5s infinite linear;
-
+.blink {
+  animation: blink 1.2s step-start 0s infinite;
+  -webkit-animation: blink 1.2s step-start 0s infinite;
 }
+
 @keyframes blink {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
 }
 @-webkit-keyframes blink {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@-ms-keyframes blink {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@-moz-keyframes blink {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
 }
