@@ -39,7 +39,7 @@
 
           <li ng-cloak>
              <p class="navbar-text online" ng-if='status === "online"'>{{ status }}</p>
-             <p class="navbar-text offline" ng-if='status === "offline"'><span>{{ status }}</span></p>
+             <p class="navbar-text offline" ng-if='status === "offline"'><span class="blinking">{{ status }}</span></p>
           </li>
 
           <li class="dropdown" ng-show="joined" ng-cloak>
