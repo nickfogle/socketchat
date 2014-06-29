@@ -36,7 +36,12 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li ng-cloak><p class="navbar-text online" ng-if='status === "online"'>{{ status }}</p><p class="navbar-text offline" ng-if='status === "offline"'>{{ loading }}</p></li>
+
+          <li ng-cloak>
+             <p class="navbar-text online" ng-if='status === "online"'>{{ status }}</p>
+             <p class="navbar-text offline" ng-if='status === "offline"'>{{ loading }}</p>
+          </li>
+
           <li class="dropdown" ng-show="joined" ng-cloak>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ peopleCount }} online <b class="caret" ng-if="peopleCount > 0"></b></a>
             <ul class="dropdown-menu">
