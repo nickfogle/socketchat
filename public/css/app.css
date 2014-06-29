@@ -124,10 +124,10 @@ font-size: 14px;
 }
 
 .blinking {
-  animation: blink 1s linear infinite;
-  -webkit-animation: blink 1s infinite linear;
-  -ms-animation: blink 1s infinite linear;
-  -moz-animation: blink 1s infinite linear;
+  animation: blink 1.5s linear infinite;
+  -webkit-animation: blink 1.5s infinite linear;
+  -ms-animation: blink 1.5s infinite linear;
+  -moz-animation: blink 1.5s infinite linear;
 
 }
 @keyframes blink {
