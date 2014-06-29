@@ -54,6 +54,7 @@ code {
   line-height: 1.5;
   border-radius: 0;
   padding: 4px 16px;
+
 }
 
 #messages {
@@ -136,4 +137,64 @@ font-size: 14px;
 
 @-webkit-keyframes type{
     from { width: 0; }
+}
+
+.prompt, .cursor, .command  {
+  font-family: FreeMono, monospace;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+}
+.prompt, .command {
+  color: #0c0;
+  text-shadow: 0 0 3px rgba(0,100,0,50);
+}
+.offline {
+  background: #000;
+  animation: blink 1s linear infinite;
+  -webkit-animation: blink 1s infinite linear;
+  -ms-animation: blink 1s infinite linear;
+  -moz-animation: blink 1s infinite linear;
+
+}
+.prompt, .cursor, .command  {
+  font-family: FreeMono, monospace;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+}
+.prompt, .command {
+  color: black;
+}
+.cursor {
+  background: #000;
+  animation: blink 1s linear infinite;
+  -webkit-animation: blink 1s infinite linear;
+  -ms-animation: blink 1s infinite linear;
+  -moz-animation: blink 1s infinite linear;
+
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes blink {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-ms-keyframes blink {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes blink {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
