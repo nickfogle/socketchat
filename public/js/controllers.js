@@ -13,6 +13,13 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
   var typing = false;
   var timeout  = undefined;
 
+  function($scope, $firebase) {
+   // Firebase URL
+   var URL = "https://socketchat.firebaseio.com";
+   // Synchronizing the items on our $scope
+   $scope.items = $firebase(new Firebase(URL + '/items'));
+ });
+
   /* ABOUT PAGE */
   $scope.about = function() {
     var modalInstance = $modal.open({
@@ -139,6 +146,7 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
     socket.emit('deleteRoom', room.id)
   }
 
+
   socket.on('sendUserDetail', function(data) {
     $scope.user = data;
   });
@@ -204,3 +212,17 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
     $scope.peopleCount = 0;
   });
 }
+
+app.controller('AuthCtrl',
+  function ($scope, $location, Auth) {
+    if (Auth.signedIn()) {
+      $location.path('/');
+    }
+
+    $scope.register = function () {
+      Auth.register($scope.user).then(function (authUser) {
+        console.log(authUser);
+        $location.path('/');
+      });
+    };
+  });
