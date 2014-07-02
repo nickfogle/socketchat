@@ -13,7 +13,6 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
   var typing = false;
   var timeout  = undefined;
 
-
   /* ABOUT PAGE */
   $scope.about = function() {
     var modalInstance = $modal.open({
@@ -139,7 +138,6 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
     $scope.message = '';
     socket.emit('deleteRoom', room.id)
   }
-
 
   socket.on('sendUserDetail', function(data) {
     $scope.user = data;
