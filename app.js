@@ -22,8 +22,3 @@ app.get('/', routes.index);
 server.listen(app.get('port'), app.get('ipaddr'), function(){
   console.log('Express server listening on IP/hostname: "' + app.get('ipaddr') + '" and port: "' + app.get('port') + '"');
 });
-
-.when('/register', {
-  templateUrl: 'views/register.html',
-  controller: 'AuthCtrl'
-})
