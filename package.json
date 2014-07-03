@@ -1,6 +1,6 @@
 {
   "name": "SocketChat",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "dependencies": {

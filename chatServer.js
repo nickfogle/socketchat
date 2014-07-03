@@ -158,7 +158,7 @@ socket.on('joinRoom', function(id) {
   if (typeof people[socket.id] !== 'undefined') {
     var room = rooms[id];
     if (socket.id === room.owner && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You own this room, why join it? ;)'});
+      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You cannot join this room. You already own it'});
       flag = true;
     }
     if (_.contains((room.people), socket.id) && !flag) {
