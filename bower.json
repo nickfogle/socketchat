@@ -5,7 +5,7 @@
   "authors": [
     "Nick Fogle"
   ],
-  "description": "Chat application using node.js, socket.io and AngularJS",
+  "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "license": "MIT",
   "ignore": [
