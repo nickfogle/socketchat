@@ -47,7 +47,7 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
         socket.emit('typing', true);
       } else {
         clearTimeout(timeout);
-        timeout = setTimeout(timeoutFunction, 1500);
+        timeout = setTimeout(timeoutFunction, 1000);
       }
     }
   }

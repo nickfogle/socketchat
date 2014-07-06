@@ -35,7 +35,7 @@ module.exports.purge = function purge(s, action) {
     var room = rooms[people[s.id].inroom]; //get room from rooms object
     if (s.id === room.owner) { //given user is the owner of the room
       if (action === 'disconnect') { //handle the disconnect event
-        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'chat bot', message: 'The owner has disconnected.'});
+        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'ChatBot', message: 'The owner has disconnected.'});
         var socketids = [];
         for (var i=0; i<sockets.length; i++) {
           socketids.push(sockets[i].id);
@@ -63,7 +63,7 @@ module.exports.purge = function purge(s, action) {
         utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
         utils.sendToSelf(s, 'sendUserDetail', people[s.id]);
       } else if (action === 'deleteRoom') { //room owner removes owned room
-        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'chat bot', message: 'The owner has removed the room.'});
+        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'ChatBot', message: 'The owner has removed the room.'});
         var socketids = [];
         for (var i=0; i<sockets.length; i++) {
           socketids.push(sockets[i].id);
@@ -88,7 +88,7 @@ module.exports.purge = function purge(s, action) {
         utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
         utils.sendToSelf(s, 'sendUserDetail', people[s.id]);
       } else if (action === 'leaveRoom') { //room owner leaves room
-        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'chat bot', message: 'The owner has left the room.'});
+        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'ChatBot', message: 'The owner has left the room.'});
         var socketids = [];
         for (var i=0; i<sockets.length; i++) {
           socketids.push(sockets[i].id);
@@ -115,7 +115,7 @@ module.exports.purge = function purge(s, action) {
       }
     } else {//user in room but does not own room
       if (action === 'disconnect') {
-        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'chat bot', message: people[s.id].name + " has left the server."});
+        utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'ChatBot', message: people[s.id].name + " has left the server."});
         if (_.contains((room.people), s.id)) {
           var personIndex = room.people.indexOf(s.id);
           room.people.splice(personIndex, 1);
@@ -136,7 +136,7 @@ module.exports.purge = function purge(s, action) {
           room.people.splice(personIndex, 1);
           people[s.id].inroom = null;
           people[s.id].roomname = null;
-          utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'chat bot', message: people[s.id].name + " has left the room."});
+          utils.sendToAllClientsInRoom(io, s.room, 'sendChatMessage', {name: 'ChatBot', message: people[s.id].name + " has left the room."});
           s.leave(room.name);
           utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
           utils.sendToSelf(s, 'sendUserDetail', people[s.id]);
@@ -145,7 +145,7 @@ module.exports.purge = function purge(s, action) {
     }
   } else {//The user isn't in a room, but maybe he just disconnected, handle the scenario:
   if (action === 'disconnect') {
-    utils.sendToAllConnectedClients(io, 'sendChatMessage', {name: 'chat bot', message: people[s.id].name + " disconnected from the server."});
+    utils.sendToAllConnectedClients(io, 'sendChatMessage', {name: 'ChatBot', message: people[s.id].name + " disconnected from the server."});
     delete people[s.id];
     totalPeopleOnline = _.size(people);
     utils.sendToAllConnectedClients(io, 'updatePeopleCount', {count: totalPeopleOnline});
@@ -154,9 +154,9 @@ module.exports.purge = function purge(s, action) {
     utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
     utils.sendToSelf(s, 'sendUserDetail', people[s.id]);
     } else if (action === 'leaveRoom') {
-      utils.sendToSelf(s, 'sendChatMessage', {name: 'chat bot', message: 'You\'re not part of the room.'});
+      utils.sendToSelf(s, 'sendChatMessage', {name: 'ChatBot', message: 'You\'re not part of the room.'});
     } else if (action === 'deleteRoom') {
-      utils.sendToSelf(s, 'sendChatMessage', {name: 'chat bot', message: 'You can\'t do that'});
+      utils.sendToSelf(s, 'sendChatMessage', {name: 'ChatBot', message: 'You can\'t do that'});
     }
   }
 };

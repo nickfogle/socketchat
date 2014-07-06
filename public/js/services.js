@@ -4,12 +4,12 @@ app.constant('useragentmsgs', {
   'errors.useragent.notFound':'unknown',
 });
 app.constant('geolocation_msgs', {
-        'errors.location.unsupportedBrowser':'Sorry, your Browser does not support location services. Consider using Google Chrome.',
+        'errors.location.unsupportedBrowser':'Browser does not support location services',
         'errors.location.notFound':'Unable to determine your location',
 });
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect("ws://bbnc.us:8000");
+  var socket = io.connect('192.168.56.102:3000');
   if (socket.socket.connected === false) {
     $rootScope.status = 'offline';
   }
