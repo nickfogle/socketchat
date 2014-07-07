@@ -77,7 +77,7 @@
       <p ng-cloak>Hello {{ user.name }}. <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room (but need to leave the current one first)
       </span><br>
       <small ng-if="user.owns">Click delete in drop-down menu in the top right corner to remove a room.</small></p>
-      <p ng-show="!user.inroom">Create a chat room or join one (also top right corner).
+      <p ng-show="!user.inroom">Create a chat room or join one from the dropdown above.
         <div id="createroom">
 
 
