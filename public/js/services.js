@@ -9,7 +9,7 @@ app.constant('geolocation_msgs', {
 });
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect("ws://127.0.0.1:8000");
+  var socket = io.connect("ws://bbnc.us:8000");
   if (socket.socket.connected === false) {
     $rootScope.status = 'offline';
   }
