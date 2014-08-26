@@ -76,7 +76,7 @@
     <div ng-hide="!joined" class="container" ng-cloak>
       <p ng-cloak>Hello {{ user.name }}. <span ng-cloak ng-if="user.owns">You own a room: <strong>{{ user.roomname }}</strong>.</span> <span ng-cloak ng-if="!user.owns && user.inroom">You have joined a room: <strong>{{ user.roomname }}</strong>.<br> You can create your own room (but need to leave the current one first)
       </span><br>
-      <small ng-if="user.owns">To remove a room, click delete from the drop-down menu in the top right corner.</small></p>
+      <small ng-if="user.owns">To remove a room, click delete from the drop-down menu in the top right.</small></p>
       <p ng-show="!user.inroom">Create a chat room or join one from the dropdown above.
         <div id="createroom">
 
@@ -153,7 +153,7 @@
 
          <p>Thanks for using my Chat Application!</p>
 
-         <p>This is an experimental project using bleeding edge JavaScript technologies. There are still bugs which should be resolved over time. If you'd like to read more about the project, please view the source code <a href="https://github.com/nickfogle/socketchat/"> here</a>.
+         <p>This project uses bleeding edge JavaScript technologies, so there are still bugs which will be resolved in time. If you'd like to read more about the project, please view the source code <a href="https://github.com/nickfogle/socketchat/"> here</a>.
          </p>
 
          <p>Enter a username to get started. Then you may choose to create a room or join an existing one. If you join a room, you cannot simultaneously create a separate room.
