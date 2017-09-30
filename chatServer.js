@@ -1,21 +1,24 @@
 module.exports = function(server) {
+
   var uuid = require('node-uuid')
   _ = require('underscore')._
-  , Room = require('./utils/room')
-  , people = {}
-  , rooms = {}
-  , chatHistory = {}
-  , chatHistoryCount = 200
-  , sockets = []
-  , io = require('socket.io').listen(server)
-  , utils = require('./utils/utils')
-  , purgatory = require('./utils/purge');
+  var Room = require('./utils/room');
+  var people = {};
+  var rooms = {};
+  var chatHistory = {};
+  var chatHistoryCount = 200;
+  var sockets = [];
+  var io = require('socket.io').listen(server);
+  var utils = require('./utils/utils');
+  var purgatory = require('./utils/purge');
+
   io.set('log level', 1);
 
   io.sockets.on('connection', function (socket) {
-    //on every connection count the number of people already online and broadcast message to all clients
+    // on every connection count the number of people already online and broadcast message to all clients
     totalPeopleOnline = _.size(people);
     utils.sendToAllConnectedClients(io,'updatePeopleCount', {count: totalPeopleOnline});
+
     totalRooms = _.size(rooms);
     utils.sendToAllConnectedClients(io, 'updateRoomsCount', {count: totalRooms});
 
@@ -72,12 +75,12 @@ module.exports = function(server) {
           utils.sendToAllConnectedClients(io,'listAvailableChatRooms', rooms);
           utils.sendToSelf(socket, 'joinedSuccessfully'); //useragent and geolocation detection
           utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
-          sockets.push(socket); //keep a collection of all connected clients
+          sockets.push(socket); // keep a collection of all connected clients
         }
       }
     });
 
-socket.on('userDetails', function(data) {
+    socket.on('userDetails', function(data) {
       //update the people object with further user details
       var countryCode = data.countrycode.toLowerCase();
       people[socket.id].countrycode = countryCode;
@@ -86,54 +89,54 @@ socket.on('userDetails', function(data) {
       utils.sendToSelf(socket, 'sendUserDetail', people[socket.id]);
     });
 
-socket.on('typing', function(data) {
-  if (typeof people[socket.id] !== 'undefined') {
-    utils.sendToAllClientsInRoom(io, socket.room, 'isTyping', {isTyping: data, person: people[socket.id].name});
-  }
-});
-
-socket.on('send', function(data) {
-  if (typeof people[socket.id] === 'undefined') {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Select a name first, please.'});
-  } else {
-    if (io.sockets.manager.roomClients[socket.id]['/'+socket.room]) {
-      if (_.size(chatHistory[socket.room]) > chatHistoryCount) {
-        chatHistory[socket.room].splice(0,1);
-      } else {
-        chatHistory[socket.room].push(data);
+    socket.on('typing', function(data) {
+      if (typeof people[socket.id] !== 'undefined') {
+        utils.sendToAllClientsInRoom(io, socket.room, 'isTyping', {isTyping: data, person: people[socket.id].name});
       }
-      utils.sendToAllClientsInRoom(io, socket.room, 'sendChatMessage', data);
-    } else {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Please connect to a room'});
-    }
-  }
-});
-
-socket.on('createRoom', function(data) {
-  var flag = false;
-  if (typeof people[socket.id] === 'undefined') {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You need a name first, please.'});
-    flag = true;
-  } else {
-    var exists = false;
-    _.find(rooms, function(k, v) {
-      if (k.name.toLowerCase() === data.toLowerCase())
-        return exists = true;
     });
-    if (!exists) {
-      if (people[socket.id].owns !== null && !flag) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You already own a room.'});
-        flag = true;
+
+    socket.on('send', function(data) {
+      if (typeof people[socket.id] === 'undefined') {
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Select a name first, please.'});
+      } else {
+        if (io.sockets.manager.roomClients[socket.id]['/'+socket.room]) {
+          if (_.size(chatHistory[socket.room]) > chatHistoryCount) {
+            chatHistory[socket.room].splice(0,1);
+          } else {
+            chatHistory[socket.room].push(data);
+          }
+          utils.sendToAllClientsInRoom(io, socket.room, 'sendChatMessage', data);
+        } else {
+          utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Please connect to a room'});
+        }
       }
-      if (people[socket.id].inroom !== null && !flag) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room.'});
+    });
+
+    socket.on('createRoom', function(data) {
+      var flag = false;
+      if (typeof people[socket.id] === 'undefined') {
+        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You need a name first, please.'});
         flag = true;
-      }
-      if (!flag) {
-        var roomName = data;
-        if (roomName.length !== 0) {
-              var uniqueRoomID = uuid.v4() //guarantees uniquness of room
-              , room = new Room(roomName, uniqueRoomID, socket.id);
+      } else {
+        var exists = false;
+        _.find(rooms, function(k, v) {
+          if (k.name.toLowerCase() === data.toLowerCase())
+            return exists = true;
+        });
+        if (!exists) {
+          if (people[socket.id].owns !== null && !flag) {
+            utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You already own a room.'});
+            flag = true;
+          }
+          if (people[socket.id].inroom !== null && !flag) {
+            utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room.'});
+            flag = true;
+          }
+          if (!flag) {
+            var roomName = data;
+            if (roomName.length !== 0) {
+              var uniqueRoomID = uuid.v4(); //guarantees uniquness of room
+              var room = new Room(roomName, uniqueRoomID, socket.id);
               people[socket.id].owns = uniqueRoomID; //set ownership of room
               people[socket.id].inroom = uniqueRoomID; //assign user to room in people object
               people[socket.id].roomname = roomName;
@@ -153,64 +156,66 @@ socket.on('createRoom', function(data) {
       }
     });
 
-socket.on('joinRoom', function(id) {
-  var flag = false;
-  if (typeof people[socket.id] !== 'undefined') {
-    var room = rooms[id];
-    if (socket.id === room.owner && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You own this room, why join it? ;)'});
-      flag = true;
-    }
-    if (_.contains((room.people), socket.id) && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in this room.'});
-      flag = true;
-    }
-    if (people[socket.id].inroom !== null && !flag) {
-      utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room ('+rooms[people[socket.id].inroom].name+').'});
-      flag = true;
-    }
-    if (!flag) {
-      var roomToJoin = rooms[id];
-      socket.room = roomToJoin.name;
-      socket.join(socket.room);
-      roomToJoin.addPerson(socket.id);
-      people[socket.id].inroom = id;
-      people[socket.id].roomname = roomToJoin.name;
-      utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
-      utils.sendToSelf(socket, 'sendUserDetail', people[socket.id]);
-      if (chatHistory[socket.room].length === 0) {
-        utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'No chat history.'});
-      } else {
-        utils.sendToSelf(socket, 'sendChatMessageHistory', chatHistory[socket.room]);
+    socket.on('joinRoom', function(id) {
+      var flag = false;
+      if (typeof people[socket.id] !== 'undefined') {
+        var room = rooms[id];
+        if (socket.id === room.owner && !flag) {
+          utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You own this room, why join it? ;)'});
+          flag = true;
+        }
+        if (_.contains((room.people), socket.id) && !flag) {
+          utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in this room.'});
+          flag = true;
+        }
+        if (people[socket.id].inroom !== null && !flag) {
+          utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'You are already in a room ('+rooms[people[socket.id].inroom].name+').'});
+          flag = true;
+        }
+        if (!flag) {
+          var roomToJoin = rooms[id];
+          socket.room = roomToJoin.name;
+          socket.join(socket.room);
+          roomToJoin.addPerson(socket.id);
+          people[socket.id].inroom = id;
+          people[socket.id].roomname = roomToJoin.name;
+          utils.sendToAllConnectedClients(io, 'updateUserDetail', people);
+          utils.sendToSelf(socket, 'sendUserDetail', people[socket.id]);
+          if (chatHistory[socket.room].length === 0) {
+            utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'No chat history.'});
+          } else {
+            utils.sendToSelf(socket, 'sendChatMessageHistory', chatHistory[socket.room]);
+          }
+        }
       }
-    }
-  }
-});
+    });
 
-socket.on('deleteRoom', function(id) {
-     var roomToDelete = rooms[id]; // find the room to remove?
-     if (typeof roomToDelete !== 'undefined') {
-      if (socket.id === roomToDelete.owner) { //only allow the owner to delete a room
-        purgatory.purge(socket, 'deleteRoom');
+    socket.on('deleteRoom', function(id) {
+      var roomToDelete = rooms[id]; // find the room to remove?
+      if (typeof roomToDelete !== 'undefined') {
+        if (socket.id === roomToDelete.owner) { //only allow the owner to delete a room
+          purgatory.purge(socket, 'deleteRoom');
+        } else {
+          utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Don\'t be cheeky - you are not the owner of this room.'});
+        }
+      }
+    });
+
+    socket.on('leaveRoom', function(id) {
+      var roomToLeave = rooms[id];
+      if (typeof roomToLeave !== 'undefined') {
+        purgatory.purge(socket, 'leaveRoom');
       } else {
         utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Don\'t be cheeky - you are not the owner of this room.'});
       }
-    }
-  });
+    });
 
-socket.on('leaveRoom', function(id) {
-  var roomToLeave = rooms[id];
-  if (typeof roomToLeave !== 'undefined') {
-    purgatory.purge(socket, 'leaveRoom');
-  } else {
-    utils.sendToSelf(socket, 'sendChatMessage', {name: 'ChatAdmin', message: 'Don\'t be cheeky - you are not the owner of this room.'});
-  }
-});
-
-socket.on('disconnect', function() {
+    socket.on('disconnect', function() {
       if (typeof people[socket.id] !== 'undefined') { //this handles the refresh of the name screen
         purgatory.purge(socket, 'disconnect');
       }
     });
-});
+
+  });
+
 };
