@@ -1,19 +1,20 @@
 {
   "name": "SocketChat",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Chat app using Node.js, Socket.io and AngularJS",
   "main": "app.js",
   "dependencies": {
     "ejs": "~0.8.5",
-    "express": "~3.4.8",
+    "express": "~4.0.0",
     "node-uuid": "~1.4.1",
-    "shrinkwrap": "~0.0.3",
-    "socket.io": "~0.9.16",
+    "socket.io": "^1.0.6",
     "underscore": "~1.5.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "bower": "*",
+  },
   "scripts": {
-    "postinstall": "export HOME=/var/lib/openshift/53725e444382ecbc5100067d/app-root/runtime/repo; ./node_modules/bower/bin/bower install"
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
