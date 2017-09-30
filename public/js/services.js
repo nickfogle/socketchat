@@ -4,12 +4,12 @@ app.constant('useragentmsgs', {
   'errors.useragent.notFound':'unknown',
 });
 app.constant('geolocation_msgs', {
-        'errors.location.unsupportedBrowser':'Sorry, your Browser does not support location services. Consider using Google Chrome.',
-        'errors.location.notFound':'Unable to determine your location',
+  'errors.location.unsupportedBrowser':'Sorry, your Browser does not support location services. Consider using Google Chrome.',
+  'errors.location.notFound':'Unable to determine your location',
 });
 
 app.factory('socket', function ($rootScope) {
-  var socket = io.connect("http://chat3-nickfogle.rhcloud.com:8000");
+  var socket = io.connect("/");
   if (socket.socket.connected === false) {
     $rootScope.status = 'offline';
   }
