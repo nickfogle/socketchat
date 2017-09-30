@@ -14,7 +14,8 @@
     "bower": "*"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
