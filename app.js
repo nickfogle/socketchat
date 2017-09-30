@@ -20,5 +20,5 @@ app.set('port', process.env.PORT || 9000);
 app.get('/', routes.index);
 
 server.listen(process.env.PORT || 9000, process.env.IP || undefined, function() {
-  console.log('Express server listening on IP/hostname: "' + app.get('ipaddr') + '" and port: "' + app.get('port') + '"');
+  console.log('Express server listening on IP/hostname: "' + '" and port: "' + process.env.PORT + '"');
 });
