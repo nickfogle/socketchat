@@ -40,6 +40,7 @@ function ChatAppCtrl($scope, $q, $modal, socket, useragent, geolocation) {
   $scope.focus = function(bool) {
     $scope.focussed = bool;
   }
+  
   $scope.typing = function(event, room) {
     if (event.which !== 13) {
       if (typing === false && $scope.focussed && room !== null) {

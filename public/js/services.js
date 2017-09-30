@@ -3,6 +3,7 @@
 app.constant('useragentmsgs', {
   'errors.useragent.notFound':'unknown',
 });
+
 app.constant('geolocation_msgs', {
   'errors.location.unsupportedBrowser':'Sorry, your Browser does not support location services. Consider using Google Chrome.',
   'errors.location.notFound':'Unable to determine your location',
@@ -10,11 +11,13 @@ app.constant('geolocation_msgs', {
 
 app.factory('socket', function ($rootScope) {
   var socket = io.connect("/");
-  if (socket.socket.connected === false) {
+  if (socket.connected === false) {
     $rootScope.status = 'offline';
   }
   var disconnect = false;
+
   return {
+
     on: function (eventName, callback) {
       socket.on(eventName, function() {
         var args = arguments;
@@ -25,6 +28,7 @@ app.factory('socket', function ($rootScope) {
         }
       });
     },
+
     emit: function (eventName, data, callback) {
       socket.emit(eventName, data, function() {
         var args = arguments;
@@ -35,15 +39,20 @@ app.factory('socket', function ($rootScope) {
         });
       });
     },
+
     disconnect: function() {
       disconnect = true;
       socket.disconnect();
     }
+
   }
+
 });
 
-app.factory('useragent', ['$q', '$rootScope', '$window', 'useragentmsgs', function ($q,$rootScope,$window,useragentmsgs) {
+app.factory('useragent', function ($q, $rootScope, $window, useragentmsgs) {
+
   return {
+
     getUserAgent: function () {
       var deferred = $q.defer();
       if ($window.navigator && $window.navigator.userAgent) {
@@ -56,6 +65,7 @@ app.factory('useragent', ['$q', '$rootScope', '$window', 'useragentmsgs', functi
       }
       return deferred.promise;
     },
+
     getIcon: function(ua) {
       var deferred = $q.defer();
       var icon = '';
@@ -68,11 +78,15 @@ app.factory('useragent', ['$q', '$rootScope', '$window', 'useragentmsgs', functi
       }
       return deferred.promise;
     }
-  };
-}]);
 
-app.factory('geolocation', ['$q','$rootScope','$window', '$http', 'geolocation_msgs',function ($q, $rootScope, $window, $http, geolocation_msgs) {
+  };
+
+});
+
+app.factory('geolocation', function ($q, $rootScope, $window, $http, geolocation_msgs) {
+
   return {
+
     getLocation: function() {
       var deferred = $q.defer();
       if ($window.navigator && $window.navigator.geolocation) {
@@ -89,6 +103,7 @@ app.factory('geolocation', ['$q','$rootScope','$window', '$http', 'geolocation_m
       }
       return deferred.promise;
     },
+
     getCountryCode: function(position) {
       var deferred = $q.defer();
       var countryCode = '';
@@ -98,5 +113,7 @@ app.factory('geolocation', ['$q','$rootScope','$window', '$http', 'geolocation_m
       });
       return deferred.promise;
     }
+
   };
-}]);
+
+});
